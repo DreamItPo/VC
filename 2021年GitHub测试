@@ -1,0 +1,11 @@
+namespace test
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("第一个 C# 程序");
+            Console.WriteLine("这是第一个控制台程序");
+        }
+    }
+}
