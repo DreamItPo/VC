@@ -3,6 +3,7 @@
 
 
 #pragma once
+#include "atltypes.h"
 
 
 class CDrawView : public CView
@@ -42,6 +43,8 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	afx_msg void OnLButtonDown(UINT nFlags, CPoint point);
+	CPoint m_ptOrigin;
+	afx_msg void OnLButtonUp(UINT nFlags, CPoint point);
 };
 
 #ifndef _DEBUG  // DrawView.cpp 中的调试版本

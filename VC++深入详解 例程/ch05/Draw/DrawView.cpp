@@ -22,11 +22,13 @@ BEGIN_MESSAGE_MAP(CDrawView, CView)
 	ON_COMMAND(ID_FILE_PRINT_DIRECT, &CView::OnFilePrint)
 	ON_COMMAND(ID_FILE_PRINT_PREVIEW, &CView::OnFilePrintPreview)
 	ON_WM_LBUTTONDOWN()
+	ON_WM_LBUTTONUP()
 END_MESSAGE_MAP()
 
 // CDrawView 构造/析构
 
 CDrawView::CDrawView()
+: m_ptOrigin(0)
 {
 	// TODO: 在此处添加构造代码
 
@@ -103,8 +105,21 @@ void CDrawView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	// TODO: 在此添加消息处理程序代码和/或调用默认值
 
-	MessageBox(L"View Clicked!");
+//	MessageBox( L"View Clicked!");
+	m_ptOrigin=point;
+
 
 
 	CView::OnLButtonDown(nFlags, point);
+}
+
+void CDrawView::OnLButtonUp(UINT nFlags, CPoint point)
+{
+	// TODO: 在此添加消息处理程序代码和/或调用默认值
+	CWindowDC dc(GetDesktopWindow());
+	dc.MoveTo(m_ptOrigin);
+	dc.LineTo(point);
+		
+
+	CView::OnLButtonUp(nFlags, point);
 }
